@@ -57,8 +57,26 @@ void DLinkedList::remove(DNode* v) {
     delete v;
 }
 
+/*
+Find the first occurrence of the specified element (element) in
+the list. Return an integer indicating the position of the element found in the
+list containing the element if found, otherwise return -1. If the element is
+found, print a message indicating its position in the list.
+*/
+
 int DLinkedList::find(const Ele& e){
-    return 0;
+    DNode* temp = header->right;    // Start at head
+    int pos = 1;                    // Position, using 1 based indexing
+
+    while(temp != trailer){
+        if(temp->ele == e){
+            cout << e << " found at position " << pos;
+            return pos;
+        }
+        temp = temp->right;         // Advance node
+        ++pos;
+    }
+    return -1;  // Element is not found
 }
 
 void DLinkedList::removeFront() {
