@@ -29,13 +29,13 @@ public:
     void addFront(const Ele& e);
     void removeFront();
     void printList() const;
-    void addBefore(DNode* v, const Ele& e); // add before v
+    void addBefore(DNode* v, const Ele& e);
     void remove(DNode* v);
-    int find(const Ele& e); //1.todo 
-    void insertAfter(DNode* v, const Ele& e); //2. todo add after v
-    void reverse(DLinkedList& L); // 3. todo reverse the list in place
-    void addBack(const Ele& e); // 4. todo
-    void removeBack();  // 5. todo
+    int find(const Ele& e);
+    void insertAfter(const Ele& existingElement, const Ele& newElement);
+    void reverse();
+    void addBack(const Ele& e);
+    void removeBack();
     friend class DLinkedListTest;
 };
 

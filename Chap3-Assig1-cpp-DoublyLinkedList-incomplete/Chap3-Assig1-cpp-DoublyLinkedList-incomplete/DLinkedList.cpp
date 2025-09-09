@@ -65,17 +65,18 @@ found, print a message indicating its position in the list.
 */
 
 int DLinkedList::find(const Ele& e){
-    DNode* temp = header->right;    // Start at head
+    DNode* buf = header->right;     // Start at head
     int pos = 1;                    // Position, using 1 based indexing
 
-    while(temp != trailer){
-        if(temp->ele == e){
+    while(buf != trailer){
+        if(buf->ele == e){
             cout << e << " found at position " << pos << endl;
             return pos;
         }
-        temp = temp->right;         // Advance node
+        buf = buf->right;           // Advance node
         ++pos;
     }
+    cout<<"Couldn't find element";
     return -1;  // Element is not found
 }
 
@@ -85,19 +86,66 @@ int DLinkedList::find(const Ele& e){
 message.
 */
 
-void DLinkedList::insertAfter(DNode* v, const Ele& e){
-    if(v == nullptr || v == trailer){
-        cout << "Unable to insert after the current element. Please check input." << endl;  // Can't insert, maybe doesn't exist?
+void DLinkedList::insertAfter(const Ele& existingElement, const Ele& newElement){
+    DNode* v = findNode(existingElement);   // Find the node containing existingElement
+
+    if (v == nullptr) {
+        cout << "Element \"" << existingElement << "\" not found. Cannot insert \"" 
+             << newElement << "\" after it." << endl;
         return;
     }
 
-    DNode* buf = new DNode; // New node, serves as buffer
-    buf->ele = e;           // Place new node between v and the next node
-    buf->right = v->right;
-    buf->left = v;
-    v->right->left = buf;
-    v->right = buf;
+    DNode* e = new DNode;   // Create new node
+    e->ele = newElement;
+
+    e->right = v->right;    // Place e between v and v->right
+    e->left  = v;
+    v->right->left = e;
+    v->right = e;
 }
+
+/*
+Reverse the order of elements in the list. This operation should
+modify the list in place so that the last element now becomes the first
+element, second last becomes the second element and so on in the modified
+list. When printed by the printList() function it print the list in reverse order.
+*/
+
+void DLinkedList::reverse(){
+    DNode* current = header;
+
+    while (current != nullptr) {        // Traverse list
+        DNode* temp = current->left;    // Swap left node with right node
+        current->left = current->right;
+        current->right = temp;
+        current = current->left;    // Move forward
+    }
+
+    DNode* temp = header;   // Swap header and trailer
+    header = trailer;
+    trailer = temp;
+}
+
+/*
+add a new element (newElement) at the back of the list).
+*/
+
+void DLinkedList::addBack(const Ele& e){
+    addBefore(trailer, e);  // Simply call existing function with trailer node
+}
+
+/*
+remove the element from the back of the list.
+*/
+
+void DLinkedList::removeBack() {
+    if (!empty()) {
+        remove(trailer->left);
+    } else {
+        cout << "List is empty, unable to remove back element." << endl;
+    }
+}
+
 
 void DLinkedList::removeFront() {
     remove(header->right);
