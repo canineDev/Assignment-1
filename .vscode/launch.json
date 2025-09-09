@@ -2,10 +2,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug DLinkedList Project",
+            "name": "Debug GameEntry Project",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/Chap3-Assig1-cpp-DoublyLinkedList-incomplete/Chap3-Assig1-cpp-DoublyLinkedList-incomplete/DLinkedListTest.exe",
+            "program": "${workspaceFolder}/Chap3-Assig1-cpp-GameScoreManagement-incomplete/Chap3-Assig1-cpp-GameScoreManagement-incomplete/GameEntryTest.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
@@ -20,7 +20,7 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "Build DLinkedList Project"
+            "preLaunchTask": "Build GameEntry Project"
         }
     ]
 }

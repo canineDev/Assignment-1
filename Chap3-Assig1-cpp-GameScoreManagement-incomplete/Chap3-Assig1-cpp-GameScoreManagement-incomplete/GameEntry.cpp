@@ -1,4 +1,4 @@
-// Public memeber functions of GameEntry class
+// Public member functions of GameEntry class
 #include <string>
 #include "GameEntry.h"
 

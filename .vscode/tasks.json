@@ -2,16 +2,17 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Build DLinkedList Project",
+            "label": "Build GameEntry Project",
             "type": "shell",
             "command": "C:\\msys64\\ucrt64\\bin\\g++.exe",
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${workspaceFolder}/Chap3-Assig1-cpp-DoublyLinkedList-incomplete/Chap3-Assig1-cpp-DoublyLinkedList-incomplete/DLinkedList.cpp",
-                "${workspaceFolder}/Chap3-Assig1-cpp-DoublyLinkedList-incomplete/Chap3-Assig1-cpp-DoublyLinkedList-incomplete/DLinkedListTest.cpp",
+                "${workspaceFolder}/Chap3-Assig1-cpp-GameScoreManagement-incomplete/Chap3-Assig1-cpp-GameScoreManagement-incomplete/GameEntry.cpp",
+                "${workspaceFolder}/Chap3-Assig1-cpp-GameScoreManagement-incomplete/Chap3-Assig1-cpp-GameScoreManagement-incomplete/GameEntryTest.cpp",
+                "${workspaceFolder}/Chap3-Assig1-cpp-GameScoreManagement-incomplete/Chap3-Assig1-cpp-GameScoreManagement-incomplete/Scores.cpp",
                 "-o",
-                "${workspaceFolder}/Chap3-Assig1-cpp-DoublyLinkedList-incomplete/Chap3-Assig1-cpp-DoublyLinkedList-incomplete/DLinkedListTest.exe"
+                "${workspaceFolder}/Chap3-Assig1-cpp-GameScoreManagement-incomplete/Chap3-Assig1-cpp-GameScoreManagement-incomplete/GameEntryTest.exe"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
