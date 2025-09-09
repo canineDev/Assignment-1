@@ -70,13 +70,33 @@ int DLinkedList::find(const Ele& e){
 
     while(temp != trailer){
         if(temp->ele == e){
-            cout << e << " found at position " << pos;
+            cout << e << " found at position " << pos << endl;
             return pos;
         }
         temp = temp->right;         // Advance node
         ++pos;
     }
     return -1;  // Element is not found
+}
+
+/*
+ Insert a new element (newElement) after a given element
+(existingElement). If the existingElement is not found, print a suitable
+message.
+*/
+
+void DLinkedList::insertAfter(DNode* v, const Ele& e){
+    if(v == nullptr || v == trailer){
+        cout << "Unable to insert after the current element. Please check input." << endl;  // Can't insert, maybe doesn't exist?
+        return;
+    }
+
+    DNode* buf = new DNode; // New node, serves as buffer
+    buf->ele = e;           // Place new node between v and the next node
+    buf->right = v->right;
+    buf->left = v;
+    v->right->left = buf;
+    v->right = buf;
 }
 
 void DLinkedList::removeFront() {
