@@ -57,6 +57,10 @@ void DLinkedList::remove(DNode* v) {
     delete v;
 }
 
+int DLinkedList::find(const Ele& e){
+    return 0;
+}
+
 void DLinkedList::removeFront() {
     remove(header->right);
 }
