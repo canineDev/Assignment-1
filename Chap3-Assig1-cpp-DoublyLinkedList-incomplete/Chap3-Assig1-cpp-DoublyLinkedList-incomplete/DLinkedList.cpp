@@ -6,10 +6,10 @@ using namespace std;
 DLinkedList::DLinkedList() {
     header = new DNode;
     trailer = new DNode;
-    header->left = nullptr; // For security
+    header->left = nullptr;     // For security
     header->right = trailer;
     trailer->left = header;
-    trailer->right = nullptr;
+    trailer->right = nullptr;   // For security
 }
 
 DLinkedList::~DLinkedList() {
@@ -127,8 +127,7 @@ void DLinkedList::reverse(){
         current = current->left;        // After swap, move forward
     }
 
-    // Swap header and trailer pointers
-    DNode* temp = header;
+    DNode* temp = header;   // Swap header and trailer pointers
     header = trailer;
     trailer = temp;
 }
