@@ -6,8 +6,10 @@ using namespace std;
 DLinkedList::DLinkedList() {
     header = new DNode;
     trailer = new DNode;
+    header->left = nullptr; // For security
     header->right = trailer;
     trailer->left = header;
+    trailer->right = nullptr;
 }
 
 DLinkedList::~DLinkedList() {
@@ -50,6 +52,10 @@ void DLinkedList::addFront(const Ele& e) {
 }
 
 void DLinkedList::remove(DNode* v) {
+    if (v == header || v == trailer) {
+        std::cerr << "Error: cannot remove header or trailer sentinel." << std::endl;
+        return;
+    }
     DNode* u = v->left;
     DNode* w = v->right;
     u->right = w;
@@ -70,13 +76,13 @@ int DLinkedList::find(const Ele& e){
 
     while(buf != trailer){
         if(buf->ele == e){
-            cout << e << " found at position " << pos << endl;
+            cout <<"Element '"<< e << "' found at position " << pos << endl;
             return pos;
         }
         buf = buf->right;           // Advance node
         ++pos;
     }
-    cout<<"Couldn't find element";
+    cout<<"Element '" << e << "' not found in the list." << endl;
     return -1;  // Element is not found
 }
 
@@ -114,14 +120,15 @@ list. When printed by the printList() function it print the list in reverse orde
 void DLinkedList::reverse(){
     DNode* current = header;
 
-    while (current != nullptr) {        // Traverse list
-        DNode* temp = current->left;    // Swap left node with right node
+    while (current != nullptr) {        // Traverse entire list
+        DNode* temp = current->left;
         current->left = current->right;
         current->right = temp;
-        current = current->left;    // Move forward
+        current = current->left;        // After swap, move forward
     }
 
-    DNode* temp = header;   // Swap header and trailer
+    // Swap header and trailer pointers
+    DNode* temp = header;
     header = trailer;
     trailer = temp;
 }
@@ -141,14 +148,13 @@ remove the element from the back of the list.
 void DLinkedList::removeBack() {
     if (!empty()) {
         remove(trailer->left);
-    } else {
-        cout << "List is empty, unable to remove back element." << endl;
     }
 }
 
-
 void DLinkedList::removeFront() {
-    remove(header->right);
+    if (!empty()) {
+        remove(header->right);
+    }
 }
 
 void DLinkedList::printList() const {
@@ -159,9 +165,13 @@ void DLinkedList::printList() const {
         return;
     }
 
+    cout << temp->ele;      // Cleaner output
+    temp = temp->right;
+
     while (temp != trailer) {
-        cout << temp->ele << endl;
+        cout << " -> " << temp->ele;
         temp = temp->right;
     }
+    cout << endl;
 }
 
