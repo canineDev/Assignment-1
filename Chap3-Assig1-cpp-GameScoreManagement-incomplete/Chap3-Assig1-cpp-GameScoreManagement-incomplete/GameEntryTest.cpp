@@ -25,6 +25,11 @@ int main() {
     BAM.add(jack);
     BAM.add(jill);
 
+    // Printing scores
+    cout << "Initial list of scores:" << endl;
+    BAM.printScores();
+    cout << endl;
+
     // Testing on a populated list
     cout << "--- 1. Testing on a populated list ---" << endl;
 
@@ -70,7 +75,7 @@ int main() {
     pair<int, int> emptyMinMax = emptyScores.findMinMaxScores();
     cout << "Min score in empty list: " << emptyMinMax.first << endl;
     cout << "Max score in empty list: " << emptyMinMax.second << endl;
-
+    
     return 0;
 }
 
