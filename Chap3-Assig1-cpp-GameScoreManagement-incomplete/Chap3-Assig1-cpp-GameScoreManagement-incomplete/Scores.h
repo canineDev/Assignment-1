@@ -14,6 +14,9 @@ public:
     void printScores() const;
     int numEnt() const;
     void insertionSort1(bool ascending);
+    int searchScore(const string& playerName) const;    //todo 1
+    double averageMaxScores() const;    //todo 2
+    pair<int,int> findMinMaxScores() const; //todo 3
 
 private:
     int maxEntries;

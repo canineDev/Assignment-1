@@ -65,3 +65,29 @@ void Scores::insertionSort1(bool ascending = true) {
     }
 }
 
+/*
+Search the score of a player by name. Return the score if found else
+return -1.
+*/
+
+int Scores::searchScore(const string& playerName) const{
+    return -1;
+}
+
+/*
+Calculate and return the average of all scores stored in the Scores list.
+*/
+
+double Scores::averageMaxScores() const{
+    return 0;
+}
+
+
+/*
+Find and return the minimum and maximum scores as a pair of
+integers
+*/
+
+pair<int,int> Scores::findMinMaxScores() const{
+    
+}
