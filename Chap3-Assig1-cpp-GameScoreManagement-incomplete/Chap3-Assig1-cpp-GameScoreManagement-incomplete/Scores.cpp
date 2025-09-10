@@ -84,12 +84,14 @@ Calculate and return the average of all scores stored in the Scores list.
 */
 
 double Scores::averageMaxScores() const {
-    if (numEntries == 0) return 0.0;    // Avoid zero division
+    if (numEntries == 0){return 0.0;}   // If there are no scores
 
     int total = 0;
+
     for (int i = 0; i < numEntries; i++) {
         total += entries[i].getScore();
     }
+    
     return static_cast<double>(total) / numEntries;
 }
 
@@ -99,9 +101,7 @@ integers
 */
 
 pair<int,int> Scores::findMinMaxScores() const {
-    if (numEntries == 0) {
-        return {0, 0};      // If there are no scores
-    }
+    if (numEntries == 0) {return {0, 0}};   // If there are no scores
 
     int minScore = entries[0].getScore();
     int maxScore = entries[0].getScore();
