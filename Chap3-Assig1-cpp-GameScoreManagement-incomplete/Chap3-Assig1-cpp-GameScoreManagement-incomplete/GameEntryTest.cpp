@@ -75,7 +75,7 @@ int main() {
     pair<int, int> emptyMinMax = emptyScores.findMinMaxScores();
     cout << "Min score in empty list: " << emptyMinMax.first << endl;
     cout << "Max score in empty list: " << emptyMinMax.second << endl;
-    
+
     return 0;
 }
 
