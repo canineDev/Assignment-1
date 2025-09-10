@@ -93,8 +93,6 @@ double Scores::averageMaxScores() const {
     return static_cast<double>(total) / numEntries;
 }
 
-
-
 /*
 Find and return the minimum and maximum scores as a pair of
 integers
@@ -102,7 +100,7 @@ integers
 
 pair<int,int> Scores::findMinMaxScores() const {
     if (numEntries == 0) {
-        return { -1, -1 };  // If there are no scores
+        return {0, 0};      // If there are no scores
     }
 
     int minScore = entries[0].getScore();
