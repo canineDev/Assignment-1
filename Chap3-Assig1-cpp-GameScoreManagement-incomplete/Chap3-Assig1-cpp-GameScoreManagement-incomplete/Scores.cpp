@@ -70,7 +70,12 @@ Search the score of a player by name. Return the score if found else
 return -1.
 */
 
-int Scores::searchScore(const string& playerName) const{
+int Scores::searchScore(const string& playerName) const {
+    for (int i = 0; i < numEntries; i++) {
+        if (entries[i].getName() == playerName) {
+            return entries[i].getScore();
+        }
+    }
     return -1;
 }
 
@@ -78,9 +83,16 @@ int Scores::searchScore(const string& playerName) const{
 Calculate and return the average of all scores stored in the Scores list.
 */
 
-double Scores::averageMaxScores() const{
-    return 0;
+double Scores::averageMaxScores() const {
+    if (numEntries == 0) return 0.0;    // Avoid zero division
+
+    int total = 0;
+    for (int i = 0; i < numEntries; i++) {
+        total += entries[i].getScore();
+    }
+    return static_cast<double>(total) / numEntries;
 }
+
 
 
 /*
@@ -88,6 +100,19 @@ Find and return the minimum and maximum scores as a pair of
 integers
 */
 
-pair<int,int> Scores::findMinMaxScores() const{
-    
+pair<int,int> Scores::findMinMaxScores() const {
+    if (numEntries == 0) {
+        return { -1, -1 };  // If there are no scores
+    }
+
+    int minScore = entries[0].getScore();
+    int maxScore = entries[0].getScore();
+
+    for (int i = 1; i < numEntries; i++) {
+        int score = entries[i].getScore();
+        if (score < minScore) minScore = score;
+        if (score > maxScore) maxScore = score;
+    }
+
+    return { minScore, maxScore };
 }
